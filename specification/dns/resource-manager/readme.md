@@ -26,15 +26,23 @@ These are the global settings for the DNS API.
 
 ``` yaml
 openapi-type: arm
-tag: package-2018-05
+tag: package-preview-2020-10
 ```
 
 
+### Tag: package-preview-2020-10
+
+These settings apply only when `--tag=package-preview-2020-10` is specified on the command line.
+
+```yaml $(tag) == 'package-preview-2020-10'
+input-file:
+  - Microsoft.Network/preview/2020-10-20/dns.json
+```
 ### Tag: package-2018-05
 
 These settings apply only when `--tag=package-2018-05` is specified on the command line.
 
-```yaml $(tag) == 'package-2018-05'
+``` yaml $(tag) == 'package-2018-05'
 input-file:
   - Microsoft.Network/stable/2018-05-01/dns.json
 directive:
@@ -57,6 +65,7 @@ directive:
     suppress:
       - DefinitionsPropertiesNamesCamelCase  
 ```
+
 ### Tag: package-2018-03-preview
 
 These settings apply only when `--tag=package-2018-03-preview` is specified on the command line.
@@ -224,7 +233,7 @@ input-file:
 - Microsoft.Network/stable/2016-04-01/dns.json
 ```
 
-## Multi-API/Profile support for AutoRest v3 generators 
+## Multi-API/Profile support for AutoRest v3 generators
 
 AutoRest V3 generators require the use of `--tag=all-api-versions` to select api files.
 
@@ -245,11 +254,10 @@ input-file:
 
 ```
 
-If there are files that should not be in the `all-api-versions` set, 
+If there are files that should not be in the `all-api-versions` set,
 uncomment the  `exclude-file` section below and add the file paths.
 
 ``` yaml $(tag) == 'all-api-versions'
 #exclude-file: 
 #  - $(this-folder)/Microsoft.Example/stable/2010-01-01/somefile.json
 ```
-

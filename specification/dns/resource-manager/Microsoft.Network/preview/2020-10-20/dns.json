@@ -3,7 +3,7 @@
   "info": {
     "title": "DnsManagementClient",
     "description": "The DNS Management Client.",
-    "version": "2017-09-01"
+    "version": "2020-10-20"
   },
   "host": "management.azure.com",
   "schemes": [

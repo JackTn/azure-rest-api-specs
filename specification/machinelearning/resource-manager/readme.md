@@ -4,10 +4,10 @@
 
 This is the AutoRest configuration file for MachineLearning.
 
-
-
 ---
+
 ## Getting Started
+
 To build the SDK for MachineLearning, simply [Install AutoRest](https://aka.ms/autorest/install) and in this folder, run:
 
 > `autorest`
@@ -15,13 +15,13 @@ To build the SDK for MachineLearning, simply [Install AutoRest](https://aka.ms/a
 To see additional help and options, run:
 
 > `autorest --help`
+
 ---
 
 ## Configuration
 
-
-
 ### Basic Information
+
 These are the global settings for the MachineLearning API.
 
 ``` yaml
@@ -41,9 +41,18 @@ tag: package-workspaces-2016-04
 ```
 
 ``` yaml $(package-workspaces)
-tag: package-workspaces-2019-10
+tag: package-preview-2020-05
 ```
 
+
+### Tag: package-preview-2020-05
+
+These settings apply only when `--tag=package-preview-2020-05` is specified on the command line.
+
+```yaml $(tag) == 'package-preview-2020-05'
+input-file:
+  - Microsoft.MachineLearning/preview/2020-05-18/workspaces.json
+```
 ### Tag: package-webservices-2017-01
 
 These settings apply only when `--tag=package-webservices-2017-01` is specified on the command line.
@@ -89,8 +98,8 @@ input-file:
 - Microsoft.MachineLearning/preview/2016-05-01-preview/webservices.json
 ```
 
-
 ## Suppression
+
 ``` yaml
 directive:
   - suppress: TrackedResourcePatchOperation
@@ -99,10 +108,9 @@ directive:
     reason: The CommitmentAssociation is an internal association from a Web Service to a Commitment Plan, which can only be created or updated by Web Service Resource Provider.
 ```
 
-
 ---
-# Code Generation
 
+# Code Generation
 
 ## Swagger to SDK
 
@@ -120,13 +128,12 @@ swagger-to-sdk:
       - bundle install && rake arm:regen_all_profiles['azure_mgmt_machine_learning']
 ```
 
-
 ## C#
 
 These settings apply only when `--csharp` is specified on the command line.
 Please also specify `--csharp-sdks-folder=<path to "SDKs" directory of your azure-sdk-for-net clone>`.
 
-```yaml $(csharp)
+``` yaml $(csharp)
 csharp:
   azure-arm: true
   payload-flattening-threshold: 1
@@ -248,8 +255,6 @@ java:
 regenerate-manager: true
 generate-interface: true
 ```
-
-
 
 ## Multi-API/Profile support for AutoRest v3 generators
 

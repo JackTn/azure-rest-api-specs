@@ -4,7 +4,7 @@
     "resourceGroupName": "kustorptest",
     "clusterName": "KustoClusterRPTest4",
     "databaseName": "databaseName1",
-    "api-version": "2017-09-07-privatepreview",
+    "api-version": "2020-05-20",
     "databasePrincipalsToAdd": {
       "value": [
         {

@@ -3,7 +3,7 @@
   "info": {
     "title": "ComputeManagementClient",
     "description": "The Compute Management Client.",
-    "version": "2019-03-01"
+    "version": "2020-05-20"
   },
   "host": "management.azure.com",
   "schemes": [
@@ -7062,10 +7062,10 @@
         "maxPrice": {
           "type": "number",
           "format": "double",
-          "description": "Specifies the maximum price you are willing to pay for a Azure Spot VM/VMSS. This price is in US Dollars. <br><br> This price will be compared with the current Azure Spot price for the VM size. Also, the prices are compared at the time of create/update of Azure Spot VM/VMSS and the operation will only succeed if  the maxPrice is greater than the current Azure Spot price. <br><br> The maxPrice will also be used for evicting a Azure Spot VM/VMSS if the current Azure Spot price goes beyond the maxPrice after creation of VM/VMSS. <br><br> Possible values are: <br><br> - Any decimal value greater than zero. Example: 0.01538 <br><br> -1 – indicates default price to be up-to on-demand. <br><br> You can set the maxPrice to -1 to indicate that the Azure Spot VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you. <br><br>Minimum api-version: 2019-03-01."
+          "description": "Specifies the maximum price you are willing to pay for a Azure Spot VM/VMSS. This price is in US Dollars. <br><br> This price will be compared with the current Azure Spot price for the VM size. Also, the prices are compared at the time of create/update of Azure Spot VM/VMSS and the operation will only succeed if  the maxPrice is greater than the current Azure Spot price. <br><br> The maxPrice will also be used for evicting a Azure Spot VM/VMSS if the current Azure Spot price goes beyond the maxPrice after creation of VM/VMSS. <br><br> Possible values are: <br><br> - Any decimal value greater than zero. Example: 0.01538 <br><br> -1 – indicates default price to be up-to on-demand. <br><br> You can set the maxPrice to -1 to indicate that the Azure Spot VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you. <br><br>Minimum api-version: 2020-05-20."
         }
       },
-      "description": "Specifies the billing related details of a Azure Spot VM or VMSS. <br><br>Minimum api-version: 2019-03-01."
+      "description": "Specifies the billing related details of a Azure Spot VM or VMSS. <br><br>Minimum api-version: 2020-05-20."
     },
     "VirtualMachineExtensionHandlerInstanceView": {
       "properties": {
@@ -7361,15 +7361,15 @@
         },
         "priority": {
           "$ref": "#/definitions/priority",
-          "description": "Specifies the priority for the virtual machine. <br><br>Minimum api-version: 2019-03-01"
+          "description": "Specifies the priority for the virtual machine. <br><br>Minimum api-version: 2020-05-20"
         },
         "evictionPolicy": {
           "$ref": "#/definitions/evictionPolicy",
-          "description": "Specifies the eviction policy for the Azure Spot virtual machine. Only supported value is 'Deallocate'. <br><br>Minimum api-version: 2019-03-01"
+          "description": "Specifies the eviction policy for the Azure Spot virtual machine. Only supported value is 'Deallocate'. <br><br>Minimum api-version: 2020-05-20"
         },
         "billingProfile": {
           "$ref": "#/definitions/BillingProfile",
-          "description": "Specifies the billing related details of a Azure Spot virtual machine. <br><br>Minimum api-version: 2019-03-01."
+          "description": "Specifies the billing related details of a Azure Spot virtual machine. <br><br>Minimum api-version: 2020-05-20."
         },
         "host": {
           "$ref": "#/definitions/SubResource",
@@ -8637,7 +8637,7 @@
         },
         "billingProfile": {
           "$ref": "#/definitions/BillingProfile",
-          "description": "Specifies the billing related details of a Azure Spot VMSS. <br><br>Minimum api-version: 2019-03-01."
+          "description": "Specifies the billing related details of a Azure Spot VMSS. <br><br>Minimum api-version: 2020-05-20."
         },
         "scheduledEventsProfile": {
           "$ref": "#/definitions/ScheduledEventsProfile",
@@ -8674,7 +8674,7 @@
         },
         "billingProfile": {
           "$ref": "#/definitions/BillingProfile",
-          "description": "Specifies the billing related details of a low priority VMSS. <br><br>Minimum api-version: 2019-03-01."
+          "description": "Specifies the billing related details of a low priority VMSS. <br><br>Minimum api-version: 2020-05-20."
         },
         "scheduledEventsProfile": {
           "$ref": "#/definitions/ScheduledEventsProfile",

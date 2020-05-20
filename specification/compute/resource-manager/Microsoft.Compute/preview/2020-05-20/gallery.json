@@ -3,7 +3,7 @@
   "info": {
     "title": "SharedImageGalleryServiceClient",
     "description": "Shared Image Gallery Service Client.",
-    "version": "2019-03-01"
+    "version": "2020-05-20"
   },
   "host": "management.azure.com",
   "schemes": [

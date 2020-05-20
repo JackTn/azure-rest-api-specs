@@ -2,7 +2,7 @@
   "parameters": {
     "subscriptionId": "subid",
     "location": "SoutheastAsia",
-    "api-version": "2019-03-01"
+    "api-version": "2020-05-20"
   },
   "responses": {
     "200": {

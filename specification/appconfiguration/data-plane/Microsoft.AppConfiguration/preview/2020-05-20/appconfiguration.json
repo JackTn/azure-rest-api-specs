@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "1.0",
+    "version": "2020-05-20",
     "title": "Azure App Configuration"
   },
   "schemes": [

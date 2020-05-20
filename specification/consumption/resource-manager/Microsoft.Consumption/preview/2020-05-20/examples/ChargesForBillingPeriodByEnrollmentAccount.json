@@ -1,6 +1,6 @@
 {
   "parameters": {
-    "api-version": "2019-04-01-preview",
+    "api-version": "2020-05-20",
     "billingAccountId": "1234",
     "enrollmentAccountId": "42425",
     "billingPeriodName": "201804",

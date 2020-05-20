@@ -3,7 +3,7 @@
     "subscriptionId": "fa68082f-8ff7-4a25-95c7-ce9da541242f",
     "resourceGroupName": "SdkRg4981",
     "jobName": "SdkJob3970",
-    "api-version": "2019-09-01",
+    "api-version": "2020-05-20",
     "$expand": "details",
     "x-ms-client-request-id": [
       "5822ad95-d3d8-40d2-9a0e-c6f318e5ac45"

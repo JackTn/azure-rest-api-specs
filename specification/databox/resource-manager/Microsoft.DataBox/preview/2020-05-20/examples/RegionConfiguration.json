@@ -2,7 +2,7 @@
   "parameters": {
     "subscriptionId": "3c66da21-607e-49b4-8bdf-f25fbb8f705f",
     "location": "westus",
-    "api-version": "2019-09-01",
+    "api-version": "2020-05-20",
     "accept-language": [
       "en-US"
     ],

@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2018-05-05",
+    "version": "2020-05-20",
     "title": "Azure Alerts Management Service Resource Provider",
     "description": "Azure Alerts Management Service provides a single pane of glass of alerts across Azure Monitor."
   },
@@ -543,7 +543,7 @@
       "in": "query",
       "required": true,
       "enum": [
-        "2018-05-05"
+        "2020-05-20"
       ],
       "x-ms-enum": {
         "name": "api-version",

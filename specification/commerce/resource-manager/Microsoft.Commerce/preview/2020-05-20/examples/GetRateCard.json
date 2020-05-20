@@ -2,7 +2,7 @@
   "title": "Get RateCard",
   "parameters": {
     "subscriptionId": "6d61cc05-8f8f-4916-b1b9-f1d9c25aae27",
-    "api-version": "2015-06-01-preview",
+    "api-version": "2020-05-20",
     "$filter": "OfferDurableId eq 'MS-AZR-0003P' and Currency eq 'USD' and Locale eq 'en-US' and RegionInfo eq 'US'"
   },
   "responses": {

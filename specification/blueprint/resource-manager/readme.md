@@ -5,7 +5,9 @@
 This is the AutoRest configuration file for Blueprint.
 
 ---
+
 ## Getting Started
+
 To build the SDK for Blueprint, simply [Install AutoRest](https://aka.ms/autorest/install) and in this folder, run:
 
 > `autorest`
@@ -13,21 +15,32 @@ To build the SDK for Blueprint, simply [Install AutoRest](https://aka.ms/autores
 To see additional help and options, run:
 
 > `autorest --help`
+
 ---
 
 ## Configuration
 
 ### Basic Information
+
 These are the global settings for the Blueprint API.
 
 ``` yaml
 title: BlueprintManagementClient
 description: Blueprint Client
 openapi-type: arm
-tag: package-2018-11-preview
+tag: package-preview-2020-05
 ```
 
 
+### Tag: package-preview-2020-05
+
+These settings apply only when `--tag=package-preview-2020-05` is specified on the command line.
+
+```yaml $(tag) == 'package-preview-2020-05'
+input-file:
+  - Microsoft.Blueprint/preview/2020-05-21/blueprintAssignment.json
+  - Microsoft.Blueprint/preview/2020-05-21/blueprintDefinition.json
+```
 ### Tag: package-2017-11-preview
 
 These settings apply only when `--tag=package-2017-11-preview` is specified on the command line.
@@ -41,7 +54,7 @@ input-file:
 ### Tag: package-2018-11-preview
 
 These settings apply only when `--tag=package-2018-11-preview` is specified on the command line.
- 
+
 ``` yaml $(tag) == 'package-2018-11-preview'
 input-file:
 - Microsoft.Blueprint/preview/2018-11-01-preview/blueprintDefinition.json
@@ -50,6 +63,7 @@ input-file:
 ```
 
 ---
+
 # Code Generation
 
 ## Swagger to SDK
@@ -64,7 +78,6 @@ swagger-to-sdk:
   - repo: azure-sdk-for-js
   - repo: azure-sdk-for-python
 ```
-
 
 ## C#
 
@@ -104,9 +117,7 @@ java:
   output-folder: $(azure-libraries-for-java-folder)/azure-mgmt-blueprint
 ```
 
-
 ## Suppression
-
 
 ``` yaml
 directive:
@@ -131,7 +142,7 @@ directive:
     reason: OperationsAPI for Microsoft.Management is out of scope.    
 ```
 
-## Multi-API/Profile support for AutoRest v3 generators 
+## Multi-API/Profile support for AutoRest v3 generators
 
 AutoRest V3 generators require the use of `--tag=all-api-versions` to select api files.
 
@@ -151,11 +162,10 @@ input-file:
 
 ```
 
-If there are files that should not be in the `all-api-versions` set, 
+If there are files that should not be in the `all-api-versions` set,
 uncomment the  `exclude-file` section below and add the file paths.
 
 ``` yaml $(tag) == 'all-api-versions'
 #exclude-file: 
 #  - $(this-folder)/Microsoft.Example/stable/2010-01-01/somefile.json
 ```
-

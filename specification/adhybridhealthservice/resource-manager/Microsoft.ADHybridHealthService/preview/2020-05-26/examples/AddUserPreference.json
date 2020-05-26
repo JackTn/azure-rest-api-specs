@@ -8,7 +8,7 @@
         "UserPreference2"
       ]
     },
-    "api-version": "2014-01-01"
+    "api-version": "2020-05-26"
   },
   "responses": {
     "200": {}

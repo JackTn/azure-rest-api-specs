@@ -2,7 +2,7 @@
   "parameters": {
     "scope": "scope",
     "associationName": "associationName",
-    "api-version": "2018-09-01-preview",
+    "api-version": "2020-06-02",
     "association": {
       "properties": {
         "targetResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appRG/providers/Microsoft.Solutions/applications/applicationName"

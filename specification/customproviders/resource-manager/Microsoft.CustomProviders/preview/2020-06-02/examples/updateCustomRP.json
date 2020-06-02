@@ -2,7 +2,7 @@
   "parameters": {
     "resourceProviderName": "newrp",
     "resourceGroupName": "testRG",
-    "api-version": "2018-09-01-preview",
+    "api-version": "2020-06-02",
     "subscriptionId": "00000000-0000-0000-0000-000000000000",
     "patchableResource": {
       "tags": {}

@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2018-09-01-preview",
+    "version": "2020-06-02",
     "title": "customproviders",
     "description": "Allows extension of ARM control plane with custom resource providers.",
     "x-ms-code-generation-settings": {

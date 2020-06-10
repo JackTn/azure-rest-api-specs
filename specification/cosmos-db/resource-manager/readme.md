@@ -4,10 +4,10 @@
 
 This is the AutoRest configuration file for Cosmos-DB.
 
-
-
 ---
+
 ## Getting Started
+
 To build the SDK for Cosmos-DB, simply [Install AutoRest](https://aka.ms/autorest/install) and in this folder, run:
 
 > `autorest`
@@ -15,21 +15,31 @@ To build the SDK for Cosmos-DB, simply [Install AutoRest](https://aka.ms/autores
 To see additional help and options, run:
 
 > `autorest --help`
+
 ---
 
 ## Configuration
 
-
-
 ### Basic Information
+
 These are the global settings for the Cosmos-DB API.
 
 ``` yaml
 title: CosmosDBManagementClient
 openapi-type: arm
-tag: package-2020-04
+tag: package-preview-2020-06
 ```
 
+
+### Tag: package-preview-2020-06
+
+These settings apply only when `--tag=package-preview-2020-06` is specified on the command line.
+
+```yaml $(tag) == 'package-preview-2020-06'
+input-file:
+  - Microsoft.DocumentDB/preview/2020-06-10/privateEndpointConnection.json
+  - Microsoft.DocumentDB/preview/2020-06-10/privateLinkResources.json
+```
 ### Tag: package-2020-04
 
 These settings apply only when `--tag=package-2020-04` is specified on the command line.
@@ -134,6 +144,7 @@ input-file:
 ```
 
 ## Suppression
+
 ``` yaml
 directive:
   - suppress: TrackedResourceGetOperation
@@ -211,8 +222,8 @@ directive:
 ```
 
 ---
-# Code Generation
 
+# Code Generation
 
 ## Swagger to SDK
 
@@ -227,7 +238,6 @@ swagger-to-sdk:
   - repo: azure-sdk-for-js
   - repo: azure-sdk-for-node
 ```
-
 
 ## C#
 
@@ -254,7 +264,8 @@ See configuration in [readme.go.md](./readme.go.md)
 ## Java
 
 See configuration in [readme.java.md](./readme.java.md)
-## Multi-API/Profile support for AutoRest v3 generators 
+
+## Multi-API/Profile support for AutoRest v3 generators
 
 AutoRest V3 generators require the use of `--tag=all-api-versions` to select api files.
 
@@ -284,11 +295,10 @@ input-file:
 
 ```
 
-If there are files that should not be in the `all-api-versions` set, 
+If there are files that should not be in the `all-api-versions` set,
 uncomment the  `exclude-file` section below and add the file paths.
 
 ``` yaml $(tag) == 'all-api-versions'
 #exclude-file: 
 #  - $(this-folder)/Microsoft.Example/stable/2010-01-01/somefile.json
 ```
-

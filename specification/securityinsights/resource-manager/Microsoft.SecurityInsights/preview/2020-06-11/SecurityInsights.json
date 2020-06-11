@@ -3,7 +3,7 @@
   "info": {
     "title": "Security Insights",
     "description": "API spec for Microsoft.SecurityInsights (Azure Security Insights) resource provider",
-    "version": "2019-01-01-preview"
+    "version": "2020-06-11"
   },
   "host": "management.azure.com",
   "schemes": [
@@ -8393,7 +8393,7 @@
     "ApiVersion": {
       "description": "API version for the operation",
       "enum": [
-        "2019-01-01-preview"
+        "2020-06-11"
       ],
       "in": "query",
       "name": "api-version",

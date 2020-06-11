@@ -4,10 +4,10 @@
 
 This is the AutoRest configuration file for StorageImportExport.
 
-
-
 ---
+
 ## Getting Started
+
 To build the SDK for StorageImportExport, simply [Install AutoRest](https://aka.ms/autorest/install) and in this folder, run:
 
 > `autorest`
@@ -15,21 +15,29 @@ To build the SDK for StorageImportExport, simply [Install AutoRest](https://aka.
 To see additional help and options, run:
 
 > `autorest --help`
+
 ---
 
 ## Configuration
 
-
-
 ### Basic Information
+
 These are the global settings for the StorageImportExport API.
 
 ``` yaml
 openapi-type: arm
-tag: package-2016-11
+tag: package-preview-2020-06
 ```
 
 
+### Tag: package-preview-2020-06
+
+These settings apply only when `--tag=package-preview-2020-06` is specified on the command line.
+
+```yaml $(tag) == 'package-preview-2020-06'
+input-file:
+  - Microsoft.ImportExport/preview/2020-06-11/storageimportexport.json
+```
 ### Tag: package-2016-11
 
 These settings apply only when `--tag=package-2016-11` is specified on the command line.
@@ -39,8 +47,8 @@ input-file:
 - Microsoft.ImportExport/stable/2016-11-01/storageimportexport.json
 ```
 
-
 ---
+
 # Code Generation
 
 ## Swagger to SDK
@@ -94,9 +102,7 @@ regenerate-manager: true
 generate-interface: true
 ```
 
-
-
-## Multi-API/Profile support for AutoRest v3 generators 
+## Multi-API/Profile support for AutoRest v3 generators
 
 AutoRest V3 generators require the use of `--tag=all-api-versions` to select api files.
 
@@ -112,11 +118,10 @@ input-file:
 
 ```
 
-If there are files that should not be in the `all-api-versions` set, 
+If there are files that should not be in the `all-api-versions` set,
 uncomment the  `exclude-file` section below and add the file paths.
 
 ``` yaml $(tag) == 'all-api-versions'
 #exclude-file: 
 #  - $(this-folder)/Microsoft.Example/stable/2010-01-01/somefile.json
 ```
-

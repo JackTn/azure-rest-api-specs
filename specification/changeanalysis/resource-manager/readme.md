@@ -26,9 +26,18 @@ These are the global settings for the changeanalysis.
 
 ``` yaml
 openapi-type: arm
-tag: package-2020-04-01-preview
+tag: package-preview-2020-06
 ```
 
+
+### Tag: package-preview-2020-06
+
+These settings apply only when `--tag=package-preview-2020-06` is specified on the command line.
+
+```yaml $(tag) == 'package-preview-2020-06'
+input-file:
+  - Microsoft.ChangeAnalysis/preview/2020-06-11/changeanalysis.json
+```
 ### Tag: package-2020-04-01-preview
 
 These settings apply only when `--tag=package-2020-04-01-preview` is specified on the command line.
@@ -114,7 +123,7 @@ directive:
       }
 ```
 
-## Multi-API/Profile support for AutoRest v3 generators 
+## Multi-API/Profile support for AutoRest v3 generators
 
 AutoRest V3 generators require the use of `--tag=all-api-versions` to select api files.
 
@@ -130,11 +139,10 @@ input-file:
 
 ```
 
-If there are files that should not be in the `all-api-versions` set, 
+If there are files that should not be in the `all-api-versions` set,
 uncomment the  `exclude-file` section below and add the file paths.
 
 ``` yaml $(tag) == 'all-api-versions'
 #exclude-file: 
 #  - $(this-folder)/Microsoft.Example/stable/2010-01-01/somefile.json
 ```
-

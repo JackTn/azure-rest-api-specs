@@ -1,13 +1,13 @@
 # DataShare
-    
+
 > see https://aka.ms/autorest
 
 This is the AutoRest configuration file for DataShare.
 
-
-
 ---
-## Getting Started 
+
+## Getting Started
+
 To build the SDK for DataShare, simply [Install AutoRest](https://aka.ms/autorest/install) and in this folder, run:
 
 > `autorest`
@@ -15,21 +15,29 @@ To build the SDK for DataShare, simply [Install AutoRest](https://aka.ms/autores
 To see additional help and options, run:
 
 > `autorest --help`
+
 ---
 
 ## Configuration
 
+### Basic Information
 
-
-### Basic Information 
 These are the global settings for the DataShare API.
 
 ``` yaml
 openapi-type: arm
-tag: package-2019-11-01
+tag: package-preview-2020-06
 ```
 
 
+### Tag: package-preview-2020-06
+
+These settings apply only when `--tag=package-preview-2020-06` is specified on the command line.
+
+```yaml $(tag) == 'package-preview-2020-06'
+input-file:
+  - Microsoft.DataShare/preview/2020-06-11/DataShare.json
+```
 ### Tag: package-2018-11-01-preview
 
 These settings apply only when `--tag=package-2018-11-01-preview` is specified on the command line.
@@ -49,8 +57,8 @@ input-file:
 ```
 
 ---
-# Code Generation
 
+# Code Generation
 
 ## Swagger to SDK
 
@@ -65,8 +73,7 @@ swagger-to-sdk:
   - repo: azure-cli-extensions
 ```
 
-
-## C# 
+## C#
 
 These settings apply only when `--csharp` is specified on the command line.
 Please also specify `--csharp-sdks-folder=<path to "SDKs" directory of your azure-sdk-for-net clone>`.
@@ -96,23 +103,24 @@ python:
   package-name: azure-mgmt-datashare
   clear-output-folder: true
 ```
+
 ``` yaml $(python) && $(python-mode) == 'update'
 python:
   no-namespace-folders: true
   output-folder: $(python-sdks-folder)/datashare/azure-mgmt-datashare/azure/mgmt/datashare
 ```
+
 ``` yaml $(python) && $(python-mode) == 'create'
 python:
   basic-setup-py: true
   output-folder: $(python-sdks-folder)/datashare/azure-mgmt-datashare
 ```
 
-
 ## Go
 
 See configuration in [readme.go.md](./readme.go.md)
 
-## Multi-API/Profile support for AutoRest v3 generators 
+## Multi-API/Profile support for AutoRest v3 generators
 
 AutoRest V3 generators require the use of `--tag=all-api-versions` to select api files.
 
@@ -129,7 +137,7 @@ input-file:
 
 ```
 
-If there are files that should not be in the `all-api-versions` set, 
+If there are files that should not be in the `all-api-versions` set,
 uncomment the  `exclude-file` section below and add the file paths.
 
 ``` yaml $(tag) == 'all-api-versions'

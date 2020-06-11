@@ -3,7 +3,7 @@
   "info": {
     "title": "BlueprintClient",
     "description": "Azure Blueprint Client.",
-    "version": "2017-11-11-preview"
+    "version": "2020-06-11"
   },
   "host": "management.azure.com",
   "schemes": [

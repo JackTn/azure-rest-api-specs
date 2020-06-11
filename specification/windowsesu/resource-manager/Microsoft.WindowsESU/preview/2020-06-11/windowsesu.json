@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2019-09-16-preview",
+    "version": "2020-06-11",
     "title": "windowsesu",
     "description": "Manage Multi-Access Keys (MAK) that enable Windows Extended Security Updates (ESU).",
     "x-ms-code-generation-settings": {

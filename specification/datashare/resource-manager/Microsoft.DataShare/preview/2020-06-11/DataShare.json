@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2019-11-01",
+    "version": "2020-06-11",
     "title": "DataShareManagementClient",
     "description": "Creates a Microsoft.DataShare management client."
   },

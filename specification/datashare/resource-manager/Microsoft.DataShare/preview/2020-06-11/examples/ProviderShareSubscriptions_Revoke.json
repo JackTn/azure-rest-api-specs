@@ -5,7 +5,7 @@
     "accountName": "Account1",
     "shareName": "Share1",
     "providerShareSubscriptionId": "4256e2cf-0f82-4865-961b-12f83333f487",
-    "api-version": "2019-11-01"
+    "api-version": "2020-06-11"
   },
   "responses": {
     "200": {
@@ -40,7 +40,7 @@
         "x-ms-ratelimit-remaining-tenant-reads": "14999",
         "x-ms-correlation-request-id": "25c78f97-0b0a-4fe9-ad39-883a482265cd",
         "x-ms-long-running-operation": true,
-        "Azure-AsyncOperation": "https://management.azure.com/subscriptions/12345678-1234-1234-12345678abc/resourceGroups/SampleResourceGroup/providers/Microsoft.DataShare/accounts/Account1/shares/Share1/operationResults/dad6baec-3a39-41df-a469-843a9ee94213?api-version=2019-11-01"
+        "Azure-AsyncOperation": "https://management.azure.com/subscriptions/12345678-1234-1234-12345678abc/resourceGroups/SampleResourceGroup/providers/Microsoft.DataShare/accounts/Account1/shares/Share1/operationResults/dad6baec-3a39-41df-a469-843a9ee94213?api-version=2020-06-11"
       },
       "body": {
         "properties": {

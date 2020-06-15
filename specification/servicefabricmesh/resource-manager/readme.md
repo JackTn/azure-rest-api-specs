@@ -38,6 +38,15 @@ directive:
   - suppress: TrackedResourcePatchOperation
     reason: The patch operation is not implemented in the preview APIs.
 ```
+
+### Tag: package-preview-2020-06
+
+These settings apply only when `--tag=package-preview-2020-06` is specified on the command line.
+
+```yaml $(tag) == 'package-preview-2020-06'
+input-file:
+  - Microsoft.ServiceFabricMesh/preview/2020-06-15/servicefabricmesh.json
+```
 ### Tag: package-2018-09-01-preview
 
 These settings apply only when `--tag=package-2018-09-01-preview` is specified on the command line.

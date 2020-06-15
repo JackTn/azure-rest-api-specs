@@ -12,7 +12,7 @@
     "resourceGroupName": "VS-Example-Group",
     "rootResourceName": "ExampleAccount",
     "resourceName": "ExampleProject",
-    "api-version": "2014-04-01-preview"
+    "api-version": "2020-06-15"
   },
   "responses": {
     "200": {

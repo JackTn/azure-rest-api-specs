@@ -4,10 +4,10 @@
 
 This is the AutoRest configuration file for DataLakeStore.
 
-
-
 ---
+
 ## Getting Started
+
 To build the SDK for DataLakeStore, simply [Install AutoRest](https://aka.ms/autorest/install) and in this folder, run:
 
 > `autorest`
@@ -15,21 +15,29 @@ To build the SDK for DataLakeStore, simply [Install AutoRest](https://aka.ms/aut
 To see additional help and options, run:
 
 > `autorest --help`
+
 ---
 
 ## Configuration
 
-
-
 ### Basic Information
+
 These are the global settings for the DataLakeStore API.
 
 ``` yaml
 openapi-type: arm
-tag: package-2016-11
+tag: package-preview-2020-06
 ```
 
 
+### Tag: package-preview-2020-06
+
+These settings apply only when `--tag=package-preview-2020-06` is specified on the command line.
+
+```yaml $(tag) == 'package-preview-2020-06'
+input-file:
+  - Microsoft.DataLakeStore/preview/2020-06-15/account.json
+```
 ### Tag: package-2016-11
 
 These settings apply only when `--tag=package-2016-11` is specified on the command line.
@@ -51,6 +59,7 @@ input-file:
 ```
 
 ## Suppression
+
 ``` yaml
 directive:
   - suppress: TrackedResourceGetOperation
@@ -65,8 +74,8 @@ directive:
 ```
 
 ---
-# Code Generation
 
+# Code Generation
 
 ## Swagger to SDK
 
@@ -84,7 +93,6 @@ swagger-to-sdk:
     after_scripts:
       - bundle install && rake arm:regen_all_profiles['azure_mgmt_datalake_store']
 ```
-
 
 ## C#
 
@@ -116,11 +124,13 @@ python:
   package-name: azure-mgmt-datalake-store
   clear-output-folder: true
 ```
+
 ``` yaml $(python) && $(python-mode) == 'update'
 python:
   no-namespace-folders: true
   output-folder: $(python-sdks-folder)/datalake/azure-mgmt-datalake-store/azure/mgmt/datalake/store
 ```
+
 ``` yaml $(python) && $(python-mode) == 'create'
 python:
   basic-setup-py: true
@@ -178,9 +188,7 @@ regenerate-manager: true
 generate-interface: true
 ```
 
-
-
-## Multi-API/Profile support for AutoRest v3 generators 
+## Multi-API/Profile support for AutoRest v3 generators
 
 AutoRest V3 generators require the use of `--tag=all-api-versions` to select api files.
 
@@ -197,11 +205,10 @@ input-file:
 
 ```
 
-If there are files that should not be in the `all-api-versions` set, 
+If there are files that should not be in the `all-api-versions` set,
 uncomment the  `exclude-file` section below and add the file paths.
 
 ``` yaml $(tag) == 'all-api-versions'
 #exclude-file: 
 #  - $(this-folder)/Microsoft.Example/stable/2010-01-01/somefile.json
 ```
-

@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2017-08-01-preview",
+    "version": "2020-06-15",
     "title": "ContainerInstanceManagementClient"
   },
   "host": "management.azure.com",

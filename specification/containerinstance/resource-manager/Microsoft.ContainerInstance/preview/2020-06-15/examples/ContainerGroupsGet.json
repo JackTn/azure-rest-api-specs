@@ -2,7 +2,7 @@
   "parameters": {
     "subscriptionId": "subid",
     "resourceGroupName": "demo",
-    "api-version": "2017-08-01-preview"
+    "api-version": "2020-06-15"
   },
   "responses": {
     "200": {

@@ -1,7 +1,7 @@
 {
   "parameters": {
     "subscriptionId": "subid",
-    "api-version": "2017-08-01-preview",
+    "api-version": "2020-06-15",
     "resourceGroupName": "demo",
     "containerGroupName": "demo1",
     "containerName": "container1",

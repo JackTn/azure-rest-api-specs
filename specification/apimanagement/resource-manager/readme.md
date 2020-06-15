@@ -28,10 +28,50 @@ These are the global settings for the ApiManagement API.
 title: ApiManagementClient
 description: ApiManagement Client
 openapi-type: arm
-tag: package-2019-12
+tag: package-preview-2020-06
 ```
 
 
+### Tag: package-preview-2020-06
+
+These settings apply only when `--tag=package-preview-2020-06` is specified on the command line.
+
+```yaml $(tag) == 'package-preview-2020-06'
+input-file:
+  - Microsoft.ApiManagement/preview/2020-06-15/apimanagement.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimapis.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimapisByTags.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimapiversionsets.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimauthorizationservers.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimbackends.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimcaches.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimcertificates.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimdeployment.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimdiagnostics.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimemailtemplates.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimgroups.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimidentityprovider.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimissues.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimloggers.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimnetworkstatus.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimnotifications.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimopenidconnectproviders.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimpolicies.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimpolicysnippets.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimportalsettings.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimproducts.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimproductsByTags.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimproperties.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimquotas.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimregions.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimreports.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimsubscriptions.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimtagresources.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimtags.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimtenant.json
+  - Microsoft.ApiManagement/preview/2020-06-15/apimusers.json
+  - Microsoft.ApiManagement/preview/2020-06-15/definitions.json
+```
 ### Tag: package-2019-12
 
 These settings apply only when `--tag=package-2019-12` is specified on the command line.
@@ -73,6 +113,7 @@ input-file:
   - Microsoft.ApiManagement/stable/2019-12-01/apimusers.json
   - Microsoft.ApiManagement/stable/2019-12-01/definitions.json
 ```
+
 ### Tag: package-preview-2019-12
 
 These settings apply only when `--tag=package-preview-2019-12` is specified on the command line.

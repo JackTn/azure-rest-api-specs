@@ -4,16 +4,16 @@
 
 This is the AutoRest configuration file for VisualStudio.
 
-
 The App service RP comprises of services where each service has its own tag.
 Hence, each sub-service has its own swagger spec.
 
 All of them are tied together using this configuration and are packaged together into one compute client library.
 This makes it easier for customers to download one (NuGet/npm/pip/maven/gem) compute client library package rather than installing individual packages for each sub service.
 
-
 ---
+
 ## Getting Started
+
 To build the SDK for VisualStudio, simply [Install AutoRest](https://aka.ms/autorest/install) and in this folder, run:
 
 > `autorest`
@@ -21,21 +21,29 @@ To build the SDK for VisualStudio, simply [Install AutoRest](https://aka.ms/auto
 To see additional help and options, run:
 
 > `autorest --help`
+
 ---
 
 ## Configuration
 
-
-
 ### Basic Information
+
 These are the global settings for the VisualStudio API.
 
 ``` yaml
 openapi-type: arm
-tag: package-2014-04-preview
+tag: package-preview-2020-06
 ```
 
 
+### Tag: package-preview-2020-06
+
+These settings apply only when `--tag=package-preview-2020-06` is specified on the command line.
+
+```yaml $(tag) == 'package-preview-2020-06'
+input-file:
+  - Microsoft.VisualStudio/preview/2020-06-15/Csm.json
+```
 ### Tag: package-2014-04-preview
 
 These settings apply only when `--tag=package-2014-04-preview` is specified on the command line.
@@ -45,10 +53,9 @@ input-file:
 - Microsoft.VisualStudio/preview/2014-04-01-preview/Csm.json
 ```
 
-
 ---
-## Code Generation
 
+## Code Generation
 
 ## Swagger to SDK
 
@@ -100,9 +107,7 @@ regenerate-manager: true
 generate-interface: true
 ```
 
-
-
-## Multi-API/Profile support for AutoRest v3 generators 
+## Multi-API/Profile support for AutoRest v3 generators
 
 AutoRest V3 generators require the use of `--tag=all-api-versions` to select api files.
 
@@ -118,11 +123,10 @@ input-file:
 
 ```
 
-If there are files that should not be in the `all-api-versions` set, 
+If there are files that should not be in the `all-api-versions` set,
 uncomment the  `exclude-file` section below and add the file paths.
 
 ``` yaml $(tag) == 'all-api-versions'
 #exclude-file: 
 #  - $(this-folder)/Microsoft.Example/stable/2010-01-01/somefile.json
 ```
-

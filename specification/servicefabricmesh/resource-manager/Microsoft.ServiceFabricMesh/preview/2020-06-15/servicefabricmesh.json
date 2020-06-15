@@ -3,7 +3,7 @@
   "info": {
     "title": "SeaBreezeManagementClient",
     "description": "APIs to deploy and manage resources to SeaBreeze.",
-    "version": "2018-07-01-preview"
+    "version": "2020-06-15"
   },
   "host": "management.azure.com",
   "schemes": [
@@ -2118,18 +2118,18 @@
       "in": "query",
       "type": "string",
       "enum": [
-        "2018-07-01-preview"
+        "2020-06-15"
       ],
-      "default": "2018-07-01-preview",
-      "description": "The version of the API. This parameter is required and its value must be `2018-07-01-preview`.",
+      "default": "2020-06-15",
+      "description": "The version of the API. This parameter is required and its value must be `2020-06-15`.",
       "required": true,
       "x-ms-enum": {
-        "name": "2018-07-01-preview",
+        "name": "2020-06-15",
         "modelAsString": true,
         "values": [
           {
-            "value": "2018-07-01-preview",
-            "description": "The `2018-07-01-preview` version of the API."
+            "value": "2020-06-15",
+            "description": "The `2020-06-15` version of the API."
           }
         ]
       }

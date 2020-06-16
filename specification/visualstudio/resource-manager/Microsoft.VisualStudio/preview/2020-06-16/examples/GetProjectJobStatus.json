@@ -7,7 +7,7 @@
     "subContainerName": "ExampleProject",
     "operation": "put",
     "jobId": "126167d2-d710-4b5d-80a8-a1d58717142d",
-    "api-version": "2014-04-01-preview"
+    "api-version": "2020-06-16"
   },
   "responses": {
     "200": {

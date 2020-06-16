@@ -4,7 +4,7 @@
     "resourceGroupName": "VS-Example-Group",
     "accountResourceName": "Example",
     "extensionResourceName": "ms.example",
-    "api-version": "2014-04-01-preview"
+    "api-version": "2020-06-16"
   },
   "responses": {
     "200": {}

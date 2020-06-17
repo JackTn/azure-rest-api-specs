@@ -31,16 +31,16 @@ openapi-type: arm
 tag: package-preview-2020-06
 ```
 
-
 ### Tag: package-preview-2020-06
 
 These settings apply only when `--tag=package-preview-2020-06` is specified on the command line.
 
-```yaml $(tag) == 'package-preview-2020-06'
+``` yaml $(tag) == 'package-preview-2020-06'
 input-file:
   - Microsoft.Blueprint/preview/2020-06-11/blueprintAssignment.json
   - Microsoft.Blueprint/preview/2020-06-11/blueprintDefinition.json
 ```
+
 ### Tag: package-2017-11-preview
 
 These settings apply only when `--tag=package-2017-11-preview` is specified on the command line.
@@ -122,7 +122,7 @@ java:
 ``` yaml
 directive:
   - from: blueprintAssignment.json
-    suppress: TrackedResourcePatchOperation 
+    suppress: TrackedResourcePatchOperation
     reason: Assignment is proxy resource.
   - from: blueprintDefinition.json
     suppress: UniqueResourcePaths
@@ -135,11 +135,15 @@ directive:
   - from: blueprintDefinition.json
     suppress: OperationsAPIImplementation
     where: $.paths
-    reason: OperationsAPI for Microsoft.Management is out of scope.    
+    reason: OperationsAPI for Microsoft.Management is out of scope.
   - from: assignmentOperation.json
     suppress: OperationsAPIImplementation
     where: $.paths
-    reason: OperationsAPI for Microsoft.Management is out of scope.    
+    reason: OperationsAPI for Microsoft.Management is out of scope.
+  - suppress: LongRunningOperationsWithLongRunningExtension
+    where: '$.paths["/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}"].delete'
+    from: blueprintAssignment.json
+    reason: fddd
 ```
 
 ## Multi-API/Profile support for AutoRest v3 generators

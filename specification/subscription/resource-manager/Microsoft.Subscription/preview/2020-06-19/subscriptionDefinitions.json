@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2017-11-01-preview",
+    "version": "2020-06-19",
     "title": "SubscriptionDefinitionsClient",
     "description": "Subscription definitions client provides an interface to create, modify and retrieve azure subscriptions programmatically."
   },

@@ -1,7 +1,7 @@
 {
   "parameters": {
     "subscriptionDefinitionName": "MySubscriptionDefinitionName",
-    "api-version": "2017-11-01-preview",
+    "api-version": "2020-06-19",
     "body": {
       "properties": {
         "subscriptionDisplayName": "My Azure Subscription Name",
@@ -12,7 +12,7 @@
   "responses": {
     "202": {
       "headers": {
-        "Location": "/providers/Microsoft.Subscription/subscriptionOperations/aeb76128-ebde-4f5a-a9ed-e7bbf2dbc994?api-version=2017-11-01-preview",
+        "Location": "/providers/Microsoft.Subscription/subscriptionOperations/aeb76128-ebde-4f5a-a9ed-e7bbf2dbc994?api-version=2020-06-19",
         "Retry-After": "60"
       }
     },

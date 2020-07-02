@@ -4,10 +4,10 @@
 
 This is the AutoRest configuration file for AnalysisServices.
 
-
-
 ---
+
 ## Getting Started
+
 To build the SDK for AnalysisServices, simply [Install AutoRest](https://aka.ms/autorest/install) and in this folder, run:
 
 > `autorest`
@@ -15,21 +15,29 @@ To build the SDK for AnalysisServices, simply [Install AutoRest](https://aka.ms/
 To see additional help and options, run:
 
 > `autorest --help`
+
 ---
 
 ## Configuration
 
-
-
 ### Basic Information
+
 These are the global settings for the AnalysisServices API.
 
 ``` yaml
 openapi-type: arm
-tag: package-2017-08
+tag: package-preview-2020-07
 ```
 
 
+### Tag: package-preview-2020-07
+
+These settings apply only when `--tag=package-preview-2020-07` is specified on the command line.
+
+```yaml $(tag) == 'package-preview-2020-07'
+input-file:
+  - Microsoft.AnalysisServices/preview/2020-07-02/analysisservices.json
+```
 ### Tag: package-2017-08
 
 These settings apply only when `--tag=package-2017-08` is specified on the command line.
@@ -67,8 +75,8 @@ input-file:
 ```
 
 ---
-# Code Generation
 
+# Code Generation
 
 ## Swagger to SDK
 
@@ -85,7 +93,6 @@ swagger-to-sdk:
     after_scripts:
       - bundle install && rake arm:regen_all_profiles['azure_mgmt_analysis_services']
 ```
-
 
 ## C#
 
@@ -181,9 +188,7 @@ regenerate-manager: true
 generate-interface: true
 ```
 
-
-
-## Multi-API/Profile support for AutoRest v3 generators 
+## Multi-API/Profile support for AutoRest v3 generators
 
 AutoRest V3 generators require the use of `--tag=all-api-versions` to select api files.
 
@@ -202,11 +207,10 @@ input-file:
 
 ```
 
-If there are files that should not be in the `all-api-versions` set, 
+If there are files that should not be in the `all-api-versions` set,
 uncomment the  `exclude-file` section below and add the file paths.
 
 ``` yaml $(tag) == 'all-api-versions'
 #exclude-file: 
 #  - $(this-folder)/Microsoft.Example/stable/2010-01-01/somefile.json
 ```
-

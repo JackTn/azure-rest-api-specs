@@ -3,7 +3,7 @@
   "info": {
     "title": "ApiManagementClient",
     "description": "Use these REST APIs to get the analytics reports associated with your Azure API Management deployment.",
-    "version": "2017-03-01"
+    "version": "2020-03-01"
   },
   "x-ms-parameterized-host": {
     "hostTemplate": "{apimBaseUrl}",

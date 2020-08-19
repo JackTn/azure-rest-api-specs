@@ -35,16 +35,16 @@ These settings apply only when `--tag=package-2017-03` is specified on the comma
 
 ``` yaml $(tag) == 'package-2017-03'
 input-file:
-- Microsoft.ApiManagement/preview/2017-03-01/apimanagement.json
-- Microsoft.ApiManagement/preview/2017-03-01/apimapis.json
-- Microsoft.ApiManagement/preview/2017-03-01/apimauthorizationservers.json
-- Microsoft.ApiManagement/preview/2017-03-01/apimbackends.json
-- Microsoft.ApiManagement/preview/2017-03-01/apimcertificates.json
-- Microsoft.ApiManagement/preview/2017-03-01/apimemailtemplate.json
-- Microsoft.ApiManagement/preview/2017-03-01/apimgroups.json
-- Microsoft.ApiManagement/preview/2017-03-01/apimidentityprovider.json
-- Microsoft.ApiManagement/preview/2017-03-01/apimloggers.json
-- Microsoft.ApiManagement/preview/2017-03-01/apimopenidconnectproviders.json
+- Microsoft.ApiManagement/preview/2020-03-01/apimanagement.json
+- Microsoft.ApiManagement/preview/2020-03-01/apimapis.json
+- Microsoft.ApiManagement/preview/2020-03-01/apimauthorizationservers.json
+- Microsoft.ApiManagement/preview/2020-03-01/apimbackends.json
+- Microsoft.ApiManagement/preview/2020-03-01/apimcertificates.json
+- Microsoft.ApiManagement/preview/2020-03-01/apimemailtemplate.json
+- Microsoft.ApiManagement/preview/2020-03-01/apimgroups.json
+- Microsoft.ApiManagement/preview/2020-03-01/apimidentityprovider.json
+- Microsoft.ApiManagement/preview/2020-03-01/apimloggers.json
+- Microsoft.ApiManagement/preview/2020-03-01/apimopenidconnectproviders.json
 - Microsoft.ApiManagement/preview/2017-03-01/apimportalsettings.json
 - Microsoft.ApiManagement/preview/2017-03-01/apimproducts.json
 - Microsoft.ApiManagement/preview/2017-03-01/apimproperties.json

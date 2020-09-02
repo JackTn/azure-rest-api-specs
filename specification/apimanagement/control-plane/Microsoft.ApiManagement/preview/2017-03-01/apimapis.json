@@ -83,7 +83,7 @@
             }
           },
           "default": {
-            "description": "Error response describing why the operation failed.",
+            "description": "failed error.",
             "schema": {
               "$ref": "./apimanagement.json#/definitions/ErrorResponse"
             }

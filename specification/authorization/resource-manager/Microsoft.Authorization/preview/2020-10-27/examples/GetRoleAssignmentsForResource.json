@@ -6,7 +6,7 @@
     "resourceType": "resourceType",
     "resourceName": "resourceName",
     "subscriptionId": "subId",
-    "api-version": "2020-04-01-preview"
+    "api-version": "2020-10-27"
   },
   "responses": {
     "200": {

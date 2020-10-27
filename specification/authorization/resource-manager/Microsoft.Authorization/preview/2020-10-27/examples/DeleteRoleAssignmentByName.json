@@ -2,7 +2,7 @@
   "parameters": {
     "scope": "scope",
     "roleAssignmentName": "roleAssignmentName",
-    "api-version": "2020-04-01-preview"
+    "api-version": "2020-10-27"
   },
   "responses": {
     "200": {

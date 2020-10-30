@@ -5,7 +5,7 @@
     "factoryName": "exampleFactoryName",
     "integrationRuntimeName": "exampleIntegrationRuntime",
     "nodeName": "YANZHANG-02",
-    "api-version": "2017-09-01-preview"
+    "api-version": "2020-10-30"
   },
   "responses": {
     "200": {

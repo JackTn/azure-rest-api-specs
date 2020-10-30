@@ -4,7 +4,7 @@
     "resourceGroupName": "exampleResourceGroup",
     "factoryName": "exampleFactoryName",
     "pipelineName": "examplePipeline",
-    "api-version": "2017-09-01-preview"
+    "api-version": "2020-10-30"
   },
   "responses": {
     "200": {},

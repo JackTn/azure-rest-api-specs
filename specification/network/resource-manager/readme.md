@@ -28,15 +28,69 @@ These are the global settings for the Network API.
 title: NetworkManagementClient
 description: Network Client
 openapi-type: arm
-tag: package-2020-06
+tag: package-preview-2020-11
 ```
 
 
+### Tag: package-preview-2020-11
+
+These settings apply only when `--tag=package-preview-2020-11` is specified on the command line.
+
+```yaml $(tag) == 'package-preview-2020-11'
+input-file:
+  - Microsoft.Network/preview/2020-11-02/applicationGateway.json
+  - Microsoft.Network/preview/2020-11-02/applicationSecurityGroup.json
+  - Microsoft.Network/preview/2020-11-02/availableDelegations.json
+  - Microsoft.Network/preview/2020-11-02/availableServiceAliases.json
+  - Microsoft.Network/preview/2020-11-02/azureFirewall.json
+  - Microsoft.Network/preview/2020-11-02/azureFirewallFqdnTag.json
+  - Microsoft.Network/preview/2020-11-02/bastionHost.json
+  - Microsoft.Network/preview/2020-11-02/checkDnsAvailability.json
+  - Microsoft.Network/preview/2020-11-02/customIpPrefix.json
+  - Microsoft.Network/preview/2020-11-02/ddosCustomPolicy.json
+  - Microsoft.Network/preview/2020-11-02/ddosProtectionPlan.json
+  - Microsoft.Network/preview/2020-11-02/dscpConfiguration.json
+  - Microsoft.Network/preview/2020-11-02/endpointService.json
+  - Microsoft.Network/preview/2020-11-02/expressRouteCircuit.json
+  - Microsoft.Network/preview/2020-11-02/expressRouteCrossConnection.json
+  - Microsoft.Network/preview/2020-11-02/expressRoutePort.json
+  - Microsoft.Network/preview/2020-11-02/firewallPolicy.json
+  - Microsoft.Network/preview/2020-11-02/ipAllocation.json
+  - Microsoft.Network/preview/2020-11-02/ipGroups.json
+  - Microsoft.Network/preview/2020-11-02/loadBalancer.json
+  - Microsoft.Network/preview/2020-11-02/natGateway.json
+  - Microsoft.Network/preview/2020-11-02/network.json
+  - Microsoft.Network/preview/2020-11-02/networkInterface.json
+  - Microsoft.Network/preview/2020-11-02/networkProfile.json
+  - Microsoft.Network/preview/2020-11-02/networkSecurityGroup.json
+  - Microsoft.Network/preview/2020-11-02/networkVirtualAppliance.json
+  - Microsoft.Network/preview/2020-11-02/networkWatcher.json
+  - Microsoft.Network/preview/2020-11-02/operation.json
+  - Microsoft.Network/preview/2020-11-02/privateEndpoint.json
+  - Microsoft.Network/preview/2020-11-02/privateLinkService.json
+  - Microsoft.Network/preview/2020-11-02/publicIpAddress.json
+  - Microsoft.Network/preview/2020-11-02/publicIpPrefix.json
+  - Microsoft.Network/preview/2020-11-02/routeFilter.json
+  - Microsoft.Network/preview/2020-11-02/routeTable.json
+  - Microsoft.Network/preview/2020-11-02/securityPartnerProvider.json
+  - Microsoft.Network/preview/2020-11-02/serviceCommunity.json
+  - Microsoft.Network/preview/2020-11-02/serviceEndpointPolicy.json
+  - Microsoft.Network/preview/2020-11-02/serviceTags.json
+  - Microsoft.Network/preview/2020-11-02/usage.json
+  - Microsoft.Network/preview/2020-11-02/virtualNetwork.json
+  - Microsoft.Network/preview/2020-11-02/virtualNetworkGateway.json
+  - Microsoft.Network/preview/2020-11-02/virtualNetworkTap.json
+  - Microsoft.Network/preview/2020-11-02/virtualRouter.json
+  - Microsoft.Network/preview/2020-11-02/virtualWan.json
+  - Microsoft.Network/preview/2020-11-02/vmssNetworkInterface.json
+  - Microsoft.Network/preview/2020-11-02/vmssPublicIpAddress.json
+  - Microsoft.Network/preview/2020-11-02/webapplicationfirewall.json
+```
 ### Tag: package-2020-06
 
 These settings apply only when `--tag=package-2020-06` is specified on the command line.
 
-```yaml $(tag) == 'package-2020-06'
+``` yaml $(tag) == 'package-2020-06'
 input-file:
   - Microsoft.Network/stable/2020-06-01/applicationGateway.json
   - Microsoft.Network/stable/2020-06-01/applicationSecurityGroup.json
@@ -86,6 +140,7 @@ input-file:
   - Microsoft.Network/stable/2020-06-01/vmssPublicIpAddress.json
   - Microsoft.Network/stable/2020-06-01/webapplicationfirewall.json
 ```
+
 ### Tag: package-2020-05
 
 These settings apply only when `--tag=package-2020-05` is specified on the command line.
@@ -1701,4 +1756,3 @@ See configuration in [readme.java.md](./readme.java.md)
 ## AzureResourceSchema
 
 See configuration in [readme.azureresourceschema.md](./readme.azureresourceschema.md)
-

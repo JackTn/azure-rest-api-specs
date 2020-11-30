@@ -1,7 +1,7 @@
 {
   "parameters": {
     "location": "eastus",
-    "api-version": "2020-07-01-preview",
+    "api-version": "2020-11-30.0.2",
     "subscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   "responses": {

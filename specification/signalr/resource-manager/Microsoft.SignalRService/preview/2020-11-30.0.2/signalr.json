@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2020-07-01-preview",
+    "version": "2020-11-30.0.2",
     "title": "SignalRManagementClient",
     "description": "REST API for Azure SignalR Service"
   },

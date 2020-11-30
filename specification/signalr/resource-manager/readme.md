@@ -4,10 +4,10 @@
 
 This is the AutoRest configuration file for SignalR.
 
-
-
 ---
+
 ## Getting Started
+
 To build the SDK for SignalR, simply [Install AutoRest](https://aka.ms/autorest/install) and in this folder, run:
 
 > `autorest`
@@ -15,18 +15,18 @@ To build the SDK for SignalR, simply [Install AutoRest](https://aka.ms/autorest/
 To see additional help and options, run:
 
 > `autorest --help`
+
 ---
 
 ## Configuration
 
-
-
 ### Basic Information
+
 These are the global settings for the SignalR API.
 
 ``` yaml
 openapi-type: arm
-tag: package-2020-07-01-preview
+tag: package-preview-2020-11
 ```
 
 ### Suppression
@@ -55,6 +55,15 @@ directive:
     reason:  The 'properties' is a user-defined dictionary, cannot be flattened.
 ```
 
+
+### Tag: package-preview-2020-11
+
+These settings apply only when `--tag=package-preview-2020-11` is specified on the command line.
+
+```yaml $(tag) == 'package-preview-2020-11'
+input-file:
+  - Microsoft.SignalRService/preview/2020-11-30.0.2/signalr.json
+```
 ### Tag: package-2020-07-01-preview
 
 These settings apply only when `--tag=package-2020-07-01-preview` is specified on the command line.
@@ -92,8 +101,8 @@ input-file:
 ```
 
 ---
-# Code Generation
 
+# Code Generation
 
 ## Swagger to SDK
 
@@ -115,7 +124,6 @@ swagger-to-sdk:
     after_scripts:
       - node sdkauto_afterscript.js signalr/resource-manager
 ```
-
 
 ## Go
 
@@ -143,4 +151,3 @@ csharp:
 ## AzureResourceSchema
 
 See configuration in [readme.azureresourceschema.md](./readme.azureresourceschema.md)
-

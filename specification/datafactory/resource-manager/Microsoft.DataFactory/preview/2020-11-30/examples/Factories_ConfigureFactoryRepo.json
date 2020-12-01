@@ -15,7 +15,7 @@
         "tenantId": "12f988bf-86d1-41af-91ab-2d7cd011db49"
       }
     },
-    "api-version": "2017-09-01-preview"
+    "api-version": "2020-11-30"
   },
   "responses": {
     "200": {
@@ -32,7 +32,7 @@
         "properties": {
           "provisioningState": "Succeeded",
           "createTime": "2017-09-13T17:33:54.0294655Z",
-          "version": "2017-09-01-preview",
+          "version": "2020-11-30",
           "vstsConfiguration": {
             "accountName": "msdata",
             "projectName": "datafactory",

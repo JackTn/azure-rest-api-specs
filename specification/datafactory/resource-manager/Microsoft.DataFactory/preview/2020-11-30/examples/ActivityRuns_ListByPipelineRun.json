@@ -9,7 +9,7 @@
     "status": null,
     "activityName": null,
     "linkedServiceName": null,
-    "api-version": "2017-09-01-preview"
+    "api-version": "2020-11-30"
   },
   "responses": {
     "200": {

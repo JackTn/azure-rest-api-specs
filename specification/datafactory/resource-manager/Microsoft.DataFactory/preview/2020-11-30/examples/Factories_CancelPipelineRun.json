@@ -4,7 +4,7 @@
     "resourceGroupName": "exampleResourceGroup",
     "factoryName": "exampleFactoryName",
     "runId": "39692ed9-c722-4d33-b8e1-1f4a9deac57f",
-    "api-version": "2017-09-01-preview"
+    "api-version": "2020-11-30"
   },
   "responses": {
     "200": {}

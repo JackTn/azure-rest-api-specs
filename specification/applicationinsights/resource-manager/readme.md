@@ -201,20 +201,6 @@ directive:
     reason: 'get workbook list by subscription is not supported'
   - suppress: OperationsAPIImplementation
     reason: 'Previously implemented operation apis are using an incorrect RP case format which I cannot change.'
-  - suppress: SECRET_PROPERTY
-    from: diagnosticServicesToken_API.json
-    where:
-      - $.definitions.DiagnosticServicesTokenResponse.properties.token
-    reason: 'Secrets are OK to return in a POST response.'
-```
-
-### Tag: package-preview-2020-10-26-only
-
-These settings apply only when `--tag=package-preview-2020-10-26-only` is specified on the command line.
-
-``` yaml $(tag) == 'package-preview-2020-10-26-only'
-input-file:
-  - Microsoft.Insights/preview/2020-10-26-preview/diagnosticServicesToken_API.json
 ```
 
 ### Tag: package-2020-10-20
@@ -348,16 +334,6 @@ These settings apply only when `--tag=package-2018-05-01-preview` is specified o
 input-file:
 - Microsoft.Insights/preview/2018-05-01-preview/componentProactiveDetection_API.json
 - Microsoft.Insights/preview/2018-05-01-preview/components_API.json
-```
-
-### Tag: package-2019-09-01-preview
-
-These settings apply only when `--tag=package-2019-09-01-preview` is specified on the command line.
-
-``` yaml $(tag) == 'package-2019-09-01-preview'
-input-file:
-- Microsoft.Insights/preview/2019-09-01-preview/QueryPackQueries_API.json
-- Microsoft.Insights/preview/2019-09-01-preview/QueryPacks_API.json
 ```
 
 ### Tag: package-2020-02-02-preview

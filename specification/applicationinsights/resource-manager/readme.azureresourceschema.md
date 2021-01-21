@@ -11,7 +11,6 @@ batch:
   - tag: schema-insights-2020-02-10-preview
   - tag: schema-insights-2020-02-02-preview
   - tag: schema-insights-2019-10-17-preview
-  - tag: schema-insights-2019-09-01-preview
   - tag: schema-insights-2018-06-17-preview
   - tag: schema-insights-2018-05-01-preview
   - tag: schema-insights-2017-10-01
@@ -20,17 +19,6 @@ batch:
 ```
 
 Please also specify `--azureresourceschema-folder=<path to the root directory of your azure-resource-manager-schemas clone>`.
-
-### Tag: schema-insights-2020-10-26-preview and azureresourceschema
-
-``` yaml $(tag) == 'schema-insights-2020-10-26-preview' && $(azureresourceschema)
-output-folder: $(azureresourceschema-folder)/schemas
-
-# all the input files in this apiVersion
-input-file:
-  - Microsoft.Insights/preview/2020-10-26-preview/diagnosticServicesToken_API.json
-
-```
 
 ### Tag: schema-insights-2020-06-02-preview and azureresourceschema
 
@@ -84,18 +72,6 @@ output-folder: $(azureresourceschema-folder)/schemas
 # all the input files in this apiVersion
 input-file:
   - Microsoft.Insights/preview/2019-10-17-preview/workbookTemplates_API.json
-
-```
-
-### Tag: schema-insights-2019-09-01-preview and azureresourceschema
-
-``` yaml $(tag) == 'schema-insights-2019-09-01-preview' && $(azureresourceschema)
-output-folder: $(azureresourceschema-folder)/schemas
-
-# all the input files in this apiVersion
-input-file:
-  - Microsoft.Insights/preview/2019-09-01-preview/QueryPackQueries_API.json
-  - Microsoft.Insights/preview/2019-09-01-preview/QueryPacks_API.json
 
 ```
 

@@ -128,12 +128,15 @@ eng/tools/**/dist
 !eng/tools/**/cmd/*.js
 !eng/tools/**/eslint.config.js
 
+!.github/**/*.js
+
 # TypeScript cache
 *.tsbuildinfo
 
-# No package-lock.json files should be commited except the top-level.
+# No package-lock.json files should be commited except the top-level and .github
 **/package-lock.json
 !/package-lock.json
+!/.github/package-lock.json
 
 # No Armstrong outputs should be commited except the tf files.
 **/terraform/**/*.json

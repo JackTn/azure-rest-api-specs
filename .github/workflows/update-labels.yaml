@@ -6,7 +6,7 @@ on:
     types: [labeled, unlabeled]
   # If an upstream workflow if completed, get only the artifacts from that workflow, and update labels
   workflow_run:
-    workflows: ["TypeSpec Requirement", "breakingchange suppressions label Workflow"]
+    workflows: ["TypeSpec Requirement"]
     types: [completed]
   workflow_dispatch:
     inputs:

@@ -72,8 +72,6 @@ module.exports = async ({ github, context, core }) => {
   core.info(`labelsToAdd: ${JSON.stringify(labelsToAdd)}`);
   core.info(`labelsToRemove: ${JSON.stringify(labelsToRemove)}`);
 
-  core.info(`issue_number: ${JSON.stringify(issue_number)}`);
-
   if (labelsToAdd.length > 0) {
     await github.rest.issues.addLabels({
       owner: owner,

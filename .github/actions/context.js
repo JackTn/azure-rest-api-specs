@@ -1,13 +1,10 @@
 // @ts-check
 
 /**
- * Extracts inputs from context based on event name and properties.
- * run_id is only defined for "workflow_run:completed" events.
- * 
  * @param {import('github-script').AsyncFunctionArguments['github']} github
  * @param {import('github-script').AsyncFunctionArguments['context']} context
  * @param {import('github-script').AsyncFunctionArguments['core']} core
- * @returns {Promise<{owner: string, repo: string, head_sha: string, issue_number: number, run_id: number }>}
+ * @returns {Promise<{owner: string, repo: string, issue_number: number, run_id: number }>}
  */
 async function extractInputs(github, context, core) {
     core.info(`extractInputs(${context.eventName}, ${context.payload.action})`);
@@ -22,7 +19,6 @@ async function extractInputs(github, context, core) {
       const inputs = {
         owner: payload.repository.owner.login,
         repo: payload.repository.name,
-        head_sha: payload.pull_request.head.sha,
         issue_number: payload.number,
         run_id: NaN
       };

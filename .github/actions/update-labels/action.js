@@ -33,13 +33,6 @@ module.exports = async ({ github, context, core }) => {
 
     artifactNames = artifacts.data.artifacts.map((a) => a.name);
   } else {
-    const workflows = await github.rest.actions.listWorkflowRunsForRepo({
-        owner,
-        repo,
-        event: 'pull_request',
-        status: 'completed',
-        head_sha: context.payload
-      });
     // TODO: List all artifacts of issue_number
   }
 

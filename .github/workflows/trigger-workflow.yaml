@@ -1,0 +1,24 @@
+name: Trigger Workflow
+
+on: pull_request
+
+jobs:
+  upload-artifacts:
+    name: Trigger Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        artifact-name: ["label-test1=true", "label-test2=true", "label-aaa=false"]
+
+    steps:
+      - name: Create empty file to upload artifacts
+        run: "> $RUNNER_TEMP/empty.txt"
+        shell: bash
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact-name }}  # Artifact name from matrix
+          path: ${{ runner.temp }}/empty.txt
+          if-no-files-found: error
+          overwrite: true

@@ -69,6 +69,9 @@ module.exports = async ({ github, context, core }) => {
     }
   }
 
+  core.info(`labelsToAdd: ${JSON.stringify(labelsToAdd)}`);
+  core.info(`labelsToRemove: ${JSON.stringify(labelsToRemove)}`);
+
   if (labelsToAdd.length > 0) {
     await github.rest.issues.addLabels({
       owner: owner,
@@ -81,6 +84,7 @@ module.exports = async ({ github, context, core }) => {
   if (labelsToRemove.length > 0) {
     // Must loop over labelsToRemove ourselves, since GitHub doesn't expose a REST API to remove in bulk. 
     for (const name of labelsToRemove) {
+      core.info(`labelsToRemove-name333, ${name}`)
       try {
         await github.rest.issues.removeLabel({
           owner: owner,

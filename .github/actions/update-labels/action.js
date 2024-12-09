@@ -93,7 +93,7 @@ module.exports = async ({ github, context, core }) => {
           owner: owner,
           repo: repo,
           issue_number: issue_number,
-          name: labelsToRemove[name],
+          name: "brownfield",
         });
       } catch (error) {
         if (error.status === 404) {

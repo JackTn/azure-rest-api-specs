@@ -1,0 +1,86 @@
+name: Manage SDK Breakingchange Suppressions Labels Workflow
+
+on:
+  pull_request:
+    branches:
+      - jacktn/suppression-action 
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+  workflow_dispatch:
+  
+jobs:
+  process-sdk-suppressions-labels:
+    name: breakingchange suppressions label Workflow
+    runs-on: ubuntu-latest
+    outputs:
+      process-sdk-suppressions-output: ${{ steps.run-suppressions-script.outputs.suppressions-result-output }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get GitHub PullRequest Context
+        uses: actions/github-script@v7
+        id: fetch-pullRequest-context
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            if (!pr) {
+              throw new Error("This workflow must run in the context of a pull request.");
+            }
+            console.log("This action trigger by ", context.eventName);
+            const prContext = {
+              number: pr.number,
+              title: pr.title,
+              html_url: pr.html_url,
+              base: {
+                owner: pr.base.repo.owner.login,
+                repo: pr.base.repo.name,
+                ref: pr.base.ref
+              },
+              head: {
+                owner: pr.head.repo.owner.login,
+                repo: pr.head.repo.name,
+                ref: pr.head.ref
+              },
+              labels: pr.labels.map(label => label.name)
+            };
+            return JSON.stringify(prContext);
+          result-encoding: string
+
+      - name: Setup Node and run `npm ci`
+        uses: ./.github/actions/setup-node-npm-ci
+      
+      - name: Run get suppressions label script
+        id: run-suppressions-script
+        env:
+          GITHUB_PULL_REQUEST_CONTEXT: ${{ steps.fetch-pullRequest-context.outputs.result }}
+          GITHUB_TOKEN: ${{ secrets.SPEC_REPO_TOKEN }}
+          OUTPUT_FILE: "output.json"
+        run: |
+          node eng/tools/sdk-suppressions/cmd/sdk-suppressions-label.js
+          OUTPUT=$(cat $OUTPUT_FILE)
+          echo "Script output labels: $OUTPUT"
+          echo "::set-output name=suppressions-result-output::$OUTPUT"
+
+  update-sdk-suppressions-labels:
+    runs-on: ubuntu-latest
+    needs: process-sdk-suppressions-labels
+    strategy:
+      matrix:
+        artifact-name: ${{ fromJson(needs.process-sdk-suppressions-labels.outputs.process-sdk-suppressions-output) }}
+    steps:
+      - name: Create empty file to upload artifacts
+        run: "> $RUNNER_TEMP/empty.txt"
+        shell: bash
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact-name }}
+          path: ${{ runner.temp }}/empty.txt
+          if-no-files-found: error
+          overwrite: true

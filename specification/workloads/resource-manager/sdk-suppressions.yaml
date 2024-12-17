@@ -1,0 +1,16 @@
+suppressions:
+  azure-sdk-for-python:
+    - package: azure-mgmt-datafactory
+      breaking-changes:
+        - bbbbbbbbb
+        - bbbbbbbbb
+        - bbbbbbbbb
+  azure-sdk-for-go:
+    - package: bbbbbbbbb
+      breaking-changes:
+        - bbbbbbbbb
+  azure-sdk-for-js:
+    - package: "@azure/arm-datafactory"
+      breaking-changes:
+        - bbbbbbbbb
+        - bbbbbbbbb

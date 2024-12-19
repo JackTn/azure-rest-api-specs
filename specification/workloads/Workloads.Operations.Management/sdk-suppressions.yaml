@@ -7,8 +7,3 @@ suppressions:
     - package: sdk/resourcemanager/datafactory/armdatafactory
       breaking-changes:
         - aaaaaa
-  azure-sdk-for-js:
-    - package: "@azure/arm-datafactory"
-      breaking-changes:
-        - aaaan
-        - aaaa

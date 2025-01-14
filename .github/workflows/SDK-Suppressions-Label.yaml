@@ -30,7 +30,7 @@ jobs:
           . eng/scripts/ChangedFiles-Functions.ps1
           $changedFiles = @(Get-ChangedFiles)
           $changedFilesArray = $changedFiles -split ' '
-          $yamlFilesArray = $changedFilesArray | Where-Object { $_ -match '\.yaml$' }
+          $yamlFilesArray = $changedFilesArray | Where-Object { $_ -match '\sdk-suppressions.yaml$' }
           $yamlFiles = $yamlFilesArray -join ' '
           echo "PR Changed sdk-suppressions.yaml files: $yamlFiles"
           Add-Content -Path $env:GITHUB_OUTPUT -Value "changedFiles=$yamlFiles"

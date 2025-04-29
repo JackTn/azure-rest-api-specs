@@ -6,6 +6,7 @@ on:
       - main
       - RPSaaSMaster
       - release*
+      - jacktn/*
 
 permissions:
   contents: read

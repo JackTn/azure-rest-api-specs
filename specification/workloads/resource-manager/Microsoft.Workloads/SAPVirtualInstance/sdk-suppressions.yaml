@@ -1,6 +1,6 @@
 suppressions:
   azure-sdk-for-go:
-    - package: 'sdk/resourcemanager/workloadssapvirtualinstance/armworkloadssapvirtualinstance'
+    - package: "sdk/resourcemanager/workloadssapvirtualinstance/armworkloadssapvirtualinstance"
       breaking-changes:
         - Enum `ConfigurationType` has been removed
         - Function `*ClientFactory.NewSAPApplicationServerInstancesClient` has been removed
@@ -16,14 +16,6 @@ suppressions:
         - Function `*SAPApplicationServerInstancesClient.NewListPager` has been removed
         - Function `*SAPApplicationServerInstancesClient.Update` has been removed
         - Function `*SAPCentralInstancesClient.BeginCreate` has been removed
-        - Function `*SAPCentralInstancesClient.BeginDelete` has been removed
-        - Function `*SAPCentralInstancesClient.BeginStartInstance` has been removed
-        - Function `*SAPCentralInstancesClient.BeginStopInstance` has been removed
-        - Function `*SAPCentralInstancesClient.Get` has been removed
-        - Function `*SAPCentralInstancesClient.NewListPager` has been removed
-        - Function `*SAPCentralInstancesClient.Update` has been removed
-        - Function `*SAPDatabaseInstancesClient.BeginCreate` has been removed
-        - Function `*SAPDatabaseInstancesClient.BeginDelete` has been removed
         - Function `*SAPDatabaseInstancesClient.BeginStartInstance` has been removed
         - Function `*SAPDatabaseInstancesClient.BeginStopInstance` has been removed
         - Function `*SAPDatabaseInstancesClient.Get` has been removed

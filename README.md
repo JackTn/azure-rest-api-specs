@@ -1,5 +1,5 @@
 # Azure REST API Specifications
-
+Rebase and merge2222
 ## Description
 
 This repository is the canonical source for REST API specifications for Microsoft Azure. You can learn more about it [here](https://eng.ms/docs/products/azure-developer-experience/design/api-specs-pr/api-repos).
@@ -14,7 +14,7 @@ External Contributors can read [Getting Started with OpenAPI Specifications](htt
 
 ### Terminology
 
-- **Offerings**, **Skus**, and **Features** - These are distinct entities represented in Eco Manager and Service Tree.  While the Offering/Sku/Feature entities and hierarchy represent the externally marketed product, **service/components** entities in service tree represent corresponding engineering entities that together power these external products.  Refer to [Product Taxonomy](https://dev.azure.com/msazure/AzureWiki/_wiki/wikis/AzureWiki.wiki/40783/Service-Tree-Product-Taxonomy) for details.
+- **Offerings**, **Skus**, and **Features** - These are distinct entities represented in Eco Manager and Service Tree.  While the Offering/Sku/Feature entities and hierarchy represent the externally marketed product, **seraSdasdaasdvice/components** entities in service tree represent corresponding engineering entities that together power these external products.  Refer to [Product Taxonomy](https://dev.azure.com/msazure/AzureWiki/_wiki/wikis/AzureWiki.wiki/40783/Service-Tree-Product-Taxonomy) for details.
 
 - **Resource Provider** - When a service onboards new functionality onto ARM, it is required to complete [Resource Provider Registration](https://armwiki.azurewebsites.net/rp_onboarding/ResourceProviderRegistration.html).  For existing **Resource Provider to Service Mapping**, refer to [Match resource provider to service](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/azure-services-resource-providers#match-resource-provider-to-service)*
 

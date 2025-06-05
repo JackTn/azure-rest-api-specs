@@ -1,7 +1,8 @@
 {
   "name": "azure-rest-api-specs",
   "devDependencies": {
-    "@azure-tools/spec-gen-sdk": "~0.8.0",
+    "@azure-tools/sp	1. Create a merge commit
+ec-gen-sdk": "~0.8.0",
     "@azure-tools/specs-shared": "file:.github/shared",
     "@azure-tools/typespec-apiview": "0.7.2",
     "@azure-tools/typespec-autorest": "0.56.0",

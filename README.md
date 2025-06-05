@@ -1,6 +1,5 @@
 # Azure REST API Specifications
-Rebase and merge1111![image](https://github.com/user-attachments/assets/10cb84f1-d4ab-4062-a539-353f6a4206e3)
-
+Rebase and merge2222
 ## Description
 
 This repository is the canonical source for REST API specifications for Microsoft Azure. You can learn more about it [here](https://eng.ms/docs/products/azure-developer-experience/design/api-specs-pr/api-repos).

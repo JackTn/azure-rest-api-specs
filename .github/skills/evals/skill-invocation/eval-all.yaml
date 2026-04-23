@@ -1,0 +1,612 @@
+name: skill-invocation-eval
+description: Evaluate the skill in spec repo has correct invocation
+
+config:
+  runs: 1
+  timeout: 300
+  model: claude-opus-4.6-1m
+  executor: copilot-sdk
+
+environment:
+  mcpServers:
+    azure-sdk-mcp:
+      type: stdio
+      command: pwsh
+      args: ["./eng/common/mcp/azure-sdk-mcp.ps1", "-Run"]
+      cwd: "."
+
+stimuli:
+
+  # ---------------------------------------------------------------------------
+  # 001 — Versioning
+  # ---------------------------------------------------------------------------
+
+  - name: 001001-version-spread-property
+    prompt: >-
+      I added `...Azure.ResourceManager.ManagedServiceIdentityProperty;` which updates all my existing API versions and introduces a breaking change. I want to introduce the properties of the spread model '...ManagedServiceIdentityProperty' in a new API version 2025-05-04-preview only.
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  - name: 001002-version-default-value
+    prompt: "add a default value `21` for property age in model EmployeeProperties from a new api version 2025-11-01"
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  - name: 001003-version-required-to-optional
+    prompt: "change the property age of EmployeeProperties from required to optional for new api version 2025-05-04-preview"
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  - name: 001004-version-property-decorator
+    prompt: "change the visibility of property 'provisioningState' from Lifecycle.Read to Lifecycle.Read and Lifecycle.Create in version 2025-05-04-preview only"
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  - name: 001005-version-add-preview-after-preview
+    prompt: "Add a new preview version `2025-05-04-preview` to my service widget resource manager. Exclude Feature: `age` property with default value 21. Carry other features."
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/shared.tsp
+          dest: shared.tsp
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/tspconfig.yaml
+          dest: tspconfig.yaml
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/package.json
+          dest: package.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2024-10-01-preview/Employees_CreateOrUpdate_MaximumSet_Gen.json
+          dest: examples/2024-10-01-preview/Employees_CreateOrUpdate_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2024-10-01-preview/Employees_Delete_MaximumSet_Gen.json
+          dest: examples/2024-10-01-preview/Employees_Delete_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2024-10-01-preview/Employees_Get_MaximumSet_Gen.json
+          dest: examples/2024-10-01-preview/Employees_Get_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2024-10-01-preview/Employees_ListByResourceGroup_MaximumSet_Gen.json
+          dest: examples/2024-10-01-preview/Employees_ListByResourceGroup_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2024-10-01-preview/Employees_ListBySubscription_MaximumSet_Gen.json
+          dest: examples/2024-10-01-preview/Employees_ListBySubscription_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2024-10-01-preview/Employees_Update_MaximumSet_Gen.json
+          dest: examples/2024-10-01-preview/Employees_Update_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2024-10-01-preview/Operations_List_MaximumSet_Gen.json
+          dest: examples/2024-10-01-preview/Operations_List_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2024-10-01-preview/Operations_List_MinimumSet_Gen.json
+          dest: examples/2024-10-01-preview/Operations_List_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2021-10-01/Employees_CreateOrUpdate_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_CreateOrUpdate_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2021-10-01/Employees_Delete_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_Delete_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2021-10-01/Employees_Get_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_Get_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2021-10-01/Employees_ListByResourceGroup_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_ListByResourceGroup_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2021-10-01/Employees_ListByResourceGroup_MinimumSet_Gen.json
+          dest: examples/2021-10-01/Employees_ListByResourceGroup_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2021-10-01/Employees_ListBySubscription_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_ListBySubscription_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2021-10-01/Employees_ListBySubscription_MinimumSet_Gen.json
+          dest: examples/2021-10-01/Employees_ListBySubscription_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2021-10-01/Employees_Update_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_Update_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2021-10-01/Operations_List_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Operations_List_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001005-version-add-preview-after-preview/examples/2021-10-01/Operations_List_MinimumSet_Gen.json
+          dest: examples/2021-10-01/Operations_List_MinimumSet_Gen.json
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  - name: 001006-version-add-preview-after-stable
+    prompt: "add a new preview version `2025-05-04-preview` to my service widget resource manager. Carry over all the features from the latest stable version"
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/shared.tsp
+          dest: shared.tsp
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/tspconfig.yaml
+          dest: tspconfig.yaml
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/package.json
+          dest: package.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2021-10-01/Employees_CreateOrUpdate_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_CreateOrUpdate_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2021-10-01/Employees_Delete_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_Delete_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2021-10-01/Employees_Get_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_Get_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2021-10-01/Employees_ListByResourceGroup_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_ListByResourceGroup_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2021-10-01/Employees_ListByResourceGroup_MinimumSet_Gen.json
+          dest: examples/2021-10-01/Employees_ListByResourceGroup_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2021-10-01/Employees_ListBySubscription_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_ListBySubscription_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2021-10-01/Employees_ListBySubscription_MinimumSet_Gen.json
+          dest: examples/2021-10-01/Employees_ListBySubscription_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2021-10-01/Employees_Update_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_Update_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2021-10-01/Operations_List_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Operations_List_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2021-10-01/Operations_List_MinimumSet_Gen.json
+          dest: examples/2021-10-01/Operations_List_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2024-10-01/Employees_CreateOrUpdate_MaximumSet_Gen.json
+          dest: examples/2024-10-01/Employees_CreateOrUpdate_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2024-10-01/Employees_Delete_MaximumSet_Gen.json
+          dest: examples/2024-10-01/Employees_Delete_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2024-10-01/Employees_Get_MaximumSet_Gen.json
+          dest: examples/2024-10-01/Employees_Get_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2024-10-01/Employees_ListByResourceGroup_MaximumSet_Gen.json
+          dest: examples/2024-10-01/Employees_ListByResourceGroup_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2024-10-01/Employees_ListByResourceGroup_MinimumSet_Gen.json
+          dest: examples/2024-10-01/Employees_ListByResourceGroup_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2024-10-01/Employees_ListBySubscription_MaximumSet_Gen.json
+          dest: examples/2024-10-01/Employees_ListBySubscription_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2024-10-01/Employees_ListBySubscription_MinimumSet_Gen.json
+          dest: examples/2024-10-01/Employees_ListBySubscription_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2024-10-01/Employees_Update_MaximumSet_Gen.json
+          dest: examples/2024-10-01/Employees_Update_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2024-10-01/Operations_List_MaximumSet_Gen.json
+          dest: examples/2024-10-01/Operations_List_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001006-version-add-preview-after-stable/examples/2024-10-01/Operations_List_MinimumSet_Gen.json
+          dest: examples/2024-10-01/Operations_List_MinimumSet_Gen.json
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  - name: 001007-version-add-stable-after-preview
+    prompt: "I want to add a new stable version `2025-01-01`. Exclude `workLocation` property and `WorkLocation` model. Carry other features."
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/shared.tsp
+          dest: shared.tsp
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/tspconfig.yaml
+          dest: tspconfig.yaml
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/package.json
+          dest: package.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2021-10-01/Employees_CreateOrUpdate_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_CreateOrUpdate_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2021-10-01/Employees_Delete_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_Delete_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2021-10-01/Employees_Get_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_Get_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2021-10-01/Employees_ListByResourceGroup_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_ListByResourceGroup_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2021-10-01/Employees_ListByResourceGroup_MinimumSet_Gen.json
+          dest: examples/2021-10-01/Employees_ListByResourceGroup_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2021-10-01/Employees_ListBySubscription_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_ListBySubscription_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2021-10-01/Employees_ListBySubscription_MinimumSet_Gen.json
+          dest: examples/2021-10-01/Employees_ListBySubscription_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2021-10-01/Employees_Update_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_Update_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2021-10-01/Operations_List_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Operations_List_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2021-10-01/Operations_List_MinimumSet_Gen.json
+          dest: examples/2021-10-01/Operations_List_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2024-10-01-preview/Employees_CreateOrUpdate_MaximumSet_Gen.json
+          dest: examples/2024-10-01-preview/Employees_CreateOrUpdate_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2024-10-01-preview/Employees_Delete_MaximumSet_Gen.json
+          dest: examples/2024-10-01-preview/Employees_Delete_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2024-10-01-preview/Employees_Get_MaximumSet_Gen.json
+          dest: examples/2024-10-01-preview/Employees_Get_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2024-10-01-preview/Employees_ListByResourceGroup_MaximumSet_Gen.json
+          dest: examples/2024-10-01-preview/Employees_ListByResourceGroup_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2024-10-01-preview/Employees_ListByResourceGroup_MinimumSet_Gen.json
+          dest: examples/2024-10-01-preview/Employees_ListByResourceGroup_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2024-10-01-preview/Employees_ListBySubscription_MaximumSet_Gen.json
+          dest: examples/2024-10-01-preview/Employees_ListBySubscription_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2024-10-01-preview/Employees_ListBySubscription_MinimumSet_Gen.json
+          dest: examples/2024-10-01-preview/Employees_ListBySubscription_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2024-10-01-preview/Employees_Update_MaximumSet_Gen.json
+          dest: examples/2024-10-01-preview/Employees_Update_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2024-10-01-preview/Operations_List_MaximumSet_Gen.json
+          dest: examples/2024-10-01-preview/Operations_List_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001007-version-add-stable-after-preview/examples/2024-10-01-preview/Operations_List_MinimumSet_Gen.json
+          dest: examples/2024-10-01-preview/Operations_List_MinimumSet_Gen.json
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  - name: 001008-version-add-stable-after-stable
+    prompt: "Add a new stable version `2025-01-01` to my service. Carry over changes."
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/shared.tsp
+          dest: shared.tsp
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/tspconfig.yaml
+          dest: tspconfig.yaml
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/package.json
+          dest: package.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2021-10-01/Employees_CreateOrUpdate_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_CreateOrUpdate_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2021-10-01/Employees_Delete_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_Delete_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2021-10-01/Employees_Get_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_Get_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2021-10-01/Employees_ListByResourceGroup_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_ListByResourceGroup_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2021-10-01/Employees_ListByResourceGroup_MinimumSet_Gen.json
+          dest: examples/2021-10-01/Employees_ListByResourceGroup_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2021-10-01/Employees_ListBySubscription_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_ListBySubscription_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2021-10-01/Employees_ListBySubscription_MinimumSet_Gen.json
+          dest: examples/2021-10-01/Employees_ListBySubscription_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2021-10-01/Employees_Update_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Employees_Update_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2021-10-01/Operations_List_MaximumSet_Gen.json
+          dest: examples/2021-10-01/Operations_List_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2021-10-01/Operations_List_MinimumSet_Gen.json
+          dest: examples/2021-10-01/Operations_List_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2024-10-01/Employees_CreateOrUpdate_MaximumSet_Gen.json
+          dest: examples/2024-10-01/Employees_CreateOrUpdate_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2024-10-01/Employees_Delete_MaximumSet_Gen.json
+          dest: examples/2024-10-01/Employees_Delete_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2024-10-01/Employees_Get_MaximumSet_Gen.json
+          dest: examples/2024-10-01/Employees_Get_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2024-10-01/Employees_ListByResourceGroup_MaximumSet_Gen.json
+          dest: examples/2024-10-01/Employees_ListByResourceGroup_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2024-10-01/Employees_ListByResourceGroup_MinimumSet_Gen.json
+          dest: examples/2024-10-01/Employees_ListByResourceGroup_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2024-10-01/Employees_ListBySubscription_MaximumSet_Gen.json
+          dest: examples/2024-10-01/Employees_ListBySubscription_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2024-10-01/Employees_ListBySubscription_MinimumSet_Gen.json
+          dest: examples/2024-10-01/Employees_ListBySubscription_MinimumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2024-10-01/Employees_Update_MaximumSet_Gen.json
+          dest: examples/2024-10-01/Employees_Update_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2024-10-01/Operations_List_MaximumSet_Gen.json
+          dest: examples/2024-10-01/Operations_List_MaximumSet_Gen.json
+        - src: ../azure-typespec-author/fixtures/001008-version-add-stable-after-stable/examples/2024-10-01/Operations_List_MinimumSet_Gen.json
+          dest: examples/2024-10-01/Operations_List_MinimumSet_Gen.json
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  # ---------------------------------------------------------------------------
+  # 002 — ARM Resource Authoring
+  # ---------------------------------------------------------------------------
+
+  - name: 002001-ARM-change-resource-type
+    prompt: "change resource Employee to be an extension resource"
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  - name: 002002-ARM-define-extension-resource
+    prompt: "add an extension resource named asset"
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  - name: 002003-ARM-define-full-update-operation
+    prompt: "Define a PATCH operation for Employees. It is to update properties of an employee. Ensure the definition meets TypeSpec Azure guidelines."
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  - name: 002004-ARM-define-badge-extension-resource
+    prompt: >-
+      Define a "badge assignment" extension resource. It should be an extension resource that can be attached to an employee. Ensure the definition meets TypeSpec Azure guidelines.
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  - name: 002005-ARM-define-the-resource
+    prompt: >-
+      Define a Azure resource "User" under the namespace "Microsoft.Contoso" using TypeSpec. Ensure the definition meets TypeSpec Azure design guidelines.
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  - name: 002006-ARM-define-child-resource
+    prompt: >-
+      Create a new "AddressResource" child resource under the parent resource "Employee". Ensure the definition meets TypeSpec Azure design guidelines.
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  - name: 002007-ARM-define-custom-action
+    prompt: >-
+      Add an additional POST action called "/notify" to the standard operations of Employee. Ensure the definition meets TypeSpec Azure design guidelines.
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  - name: 002008-ARM-add-parameters
+    prompt: "add top and skip query parameters to the ListBySubscription operation in interface Employees"
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  # ---------------------------------------------------------------------------
+  # 003 — LRO / Operations
+  # ---------------------------------------------------------------------------
+
+  - name: 003001-dataplane-async-delete-op
+    prompt: "Add an async delete operation for StacItems"
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  - name: 003002-arm-action-lro
+    prompt: "Add a move async operation to move employee, operation's request is MoveRequest, response is MoveResponse"
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  - name: 003003-arm-modify-response
+    prompt: "Modify the LRO createOrUpdate PUT operation in interface Employees so that it returns Azure-AsyncOperation header but NOT Retry-After header in the 201 response. The operation currently uses ArmResourceCreateOrReplaceAsync<Employee> template."
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  # ---------------------------------------------------------------------------
+  # 004 — Decorators
+  # ---------------------------------------------------------------------------
+
+  - name: 004001-decorate-mgmt-resource-name-parameter
+    prompt: "add minLength decorator to set the minLength 1 for resource name parameter of Employee resource"
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  - name: 004002-decorate-length-constrains-on-array-item
+    prompt: "I have a property `assets: string[]` in EmployeeProperties. Add @minLength(3) @maxLength(10) constraints for any item of the assets array."
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review
+
+  # ---------------------------------------------------------------------------
+  # 005 — Warnings / Suppressions
+  # ---------------------------------------------------------------------------
+
+  - name: 005001-warning-suppress-warning
+    prompt: >-
+      Add suppressions for the warnings produced by "tsp compile .", and set the justification to "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details".
+    environment:
+      files:
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/employee.tsp
+          dest: employee.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/main.tsp
+          dest: main.tsp
+        - src: ../azure-typespec-author/fixtures/Microsoft.Widget/Widget/tspconfig.yaml
+          dest: tspconfig.yaml
+    graders:
+      - type: skill-invocation
+        config:
+          required:
+            - azure-typespec-author
+          disallowed:
+            - azure-api-review

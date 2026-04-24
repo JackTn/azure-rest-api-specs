@@ -5,6 +5,7 @@ import "@azure-tools/typespec-azure-resource-manager";
 
 using TypeSpec.Rest;
 using TypeSpec.Http;
+using TypeSpec.Versioning;
 using Azure.Core;
 using Azure.ResourceManager;
 
@@ -26,7 +27,7 @@ model EmployeeProperties {
 
   /** Email of employee */
   email?: string;
-
+  
   /** Department of employee */
   department?: string;
 
@@ -37,36 +38,12 @@ model EmployeeProperties {
   @encode("base64url")
   profile?: bytes;
 
-  /** The assets belong to the employee. */
-  assets: string[];
-
   /** The status of the last operation. */
   @visibility(Lifecycle.Read)
   provisioningState?: ProvisioningState;
 }
 
-/** Export result model */
-model ExportResult {
-  /** Exported data */
-  data?: string;
-}
-
-/** Employee move request */
-model MoveRequest {
-  /** The moving from location */
-  from: string;
-
-  /** The moving to location */
-  to: string;
-}
-
-/** Employee move response */
-model MoveResponse {
-  /** The status of the move */
-  movingStatus: string;
-}
-
-/** The resource provisioning state. */
+/** The provisioning state of a resource. */
 @lroStatus
 union ProvisioningState {
   ResourceProvisioningState,
@@ -86,15 +63,48 @@ union ProvisioningState {
   string,
 }
 
+/** Employee move request */
+model MoveRequest {
+  /** The moving from location */
+  from: string;
+
+  /** The moving to location */
+  to: string;
+}
+
+/** Employee move response */
+model MoveResponse {
+  /** The status of the move */
+  movingStatus: string;
+}
+
+/** Export result model */
+model ExportResult {
+  /** Exported data */
+  data?: string;
+}
+
 @armResourceOperations
 interface Employees {
   get is ArmResourceRead<Employee>;
   createOrUpdate is ArmResourceCreateOrReplaceAsync<Employee>;
-  update is ArmResourcePatchSync<Employee, EmployeeProperties>;
+  update is ArmCustomPatchSync<
+    Employee,
+    Azure.ResourceManager.Foundations.ResourceUpdateModel<
+      Employee,
+      EmployeeProperties
+    >
+  >;
   delete is ArmResourceDeleteWithoutOkAsync<Employee>;
   listByResourceGroup is ArmResourceListByParent<Employee>;
   listBySubscription is ArmListBySubscription<Employee>;
 
   /** Export employee data */
   exportData is ArmResourceActionSync<Employee, void, ExportResult>;
+
+  /** A sample resource action that move employee to different location */
+  move is ArmResourceActionSync<Employee, MoveRequest, MoveResponse>;
+
+  /** A sample HEAD operation to check resource existence */
+  checkExistence is ArmResourceCheckExistence<Employee>;
 }

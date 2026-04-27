@@ -13,7 +13,9 @@ environment:
       type: stdio
       command: pwsh
       args: ["./eng/common/mcp/azure-sdk-mcp.ps1", "-Run"]
-      cwd: "."
+      cwd: "." 
+  skills:
+    - ../../azure-typespec-author/
       # env:
       #     AZURE_SDK_KB_ENDPOINT: "http://localhost:8088"
 
@@ -146,3 +148,25 @@ stimuli:
         config:
           required: ["azure-typespec-author"]
           disallowed: ["azure-api-review"]
+
+  # - name: 004002-decorate-length-constrains-on-array-item
+  #   prompt: "I have a property `assets: string[]` in EmployeeProperties. Add @minLength(3) @maxLength(10) constraints for any item of the assets array."
+  #   environment:
+  #     files:
+  #       - src: ../azure-typespec-author/fixtures/004002-decorate-length-constrains-on-array-item/employee.tsp
+  #         dest: employee.tsp
+  #       - src: ../azure-typespec-author/fixtures/004002-decorate-length-constrains-on-array-item/main.tsp
+  #         dest: main.tsp
+  #       - src: ../azure-typespec-author/fixtures/004002-decorate-length-constrains-on-array-item/package.json
+  #         dest: package.json
+  #       - src: ../azure-typespec-author/fixtures/004002-decorate-length-constrains-on-array-item/readme.md
+  #         dest: readme.md
+  #       - src: ../azure-typespec-author/fixtures/004002-decorate-length-constrains-on-array-item/shared.tsp
+  #         dest: shared.tsp
+  #       - src: ../azure-typespec-author/fixtures/004002-decorate-length-constrains-on-array-item/tspconfig.yaml
+  #         dest: tspconfig.yaml
+  #   graders:
+  #     - type: skill-invocation
+  #       config:
+  #         required: ["azure-typespec-author"]
+  #         disallowed: ["azure-api-review"]
